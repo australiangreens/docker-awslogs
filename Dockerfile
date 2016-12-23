@@ -2,7 +2,7 @@ FROM ubuntu:latest
 MAINTAINER Brett Neese <brett@neese.rocks>, Ryuta Otaki <otaki.ryuta@classmethod.jp>, Sergey Zhukov <sergey@jetbrains.com>
 
 RUN apt-get update
-RUN apt-get install -q -y python python-pip wget
+RUN apt-get install -q -y python python-pip wget cron
 RUN cd / ; wget https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py
 
 ADD awslogs.conf.dummy /
