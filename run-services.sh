@@ -10,30 +10,36 @@ shutdown_awslogs()
 trap shutdown_awslogs INT TERM HUP
 
 
-# [/mnt/logs/access.log]
+# [/var/log/logfile]
 # datetime_format = %d/%b/%Y:%H:%M:%S %z
 # file = /mnt/logs/access.log
 # buffer_duration = 5000
-# log_stream_name = {instance_id}
+# log_stream_name = {instance_id}-$logfile
 # initial_position = start_of_file
-# log_group_name = nginx-server
+# log_group_name = logs
 
-LOGFILE=${AWS_LOGFILE:-"/mnt/logs/access.log"}
+LOGFILES=${AWS_LOGFILES:-"/mnt/var/log/messages"}
 LOGFORMAT=${AWS_LOGFORMAT:-"%d/%b/%Y:%H:%M:%S %z"}
 DURATION=${AWS_DURATION:-"5000"}
-GROUPNAME=${AWS_GROUPNAME:-"nginx-server"}
+GROUPNAME=${AWS_GROUPNAME:-"logs"}
 
 cp -f /awslogs.conf.dummy /var/awslogs/etc/awslogs.conf
 
-cat >> /var/awslogs/etc/awslogs.conf <<EOF
+(IFS=:
+for LOGFILE in $LOGFILES; do
+      o="$o
 [${LOGFILE}]
 datetime_format = ${LOGFORMAT}
-file = ${LOGFILE}
+file = /mnt/${LOGFILE}
 buffer_duration = ${DURATION}
-log_stream_name = {instance_id}
+log_stream_name = {instance_id}-${LOGFILE}
 initial_position = start_of_file
 log_group_name = ${GROUPNAME}
+"
+done
 
+cat >> /var/awslogs/etc/awslogs.conf <<EOF
+    $o
 EOF
 
 /var/awslogs/bin/awslogs-agent-launcher.sh &
