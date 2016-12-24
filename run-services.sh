@@ -41,6 +41,7 @@ done
 cat >> /var/awslogs/etc/awslogs.conf <<EOF
     $o
 EOF
+)
 
 /var/awslogs/bin/awslogs-agent-launcher.sh &
 
