@@ -37,7 +37,7 @@ for LOGFILE in $LOGFILES; do
       o="$o
 [${LOGFILE}]
 datetime_format = ${LOGFORMAT}
-file = /mnt/${LOGFILE}
+file = /mnt${LOGFILE}
 buffer_duration = ${DURATION}
 log_stream_name = {instance_id}-${LOGFILE}
 initial_position = start_of_file

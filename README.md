@@ -27,10 +27,10 @@ log_group_name = logs
 
 ```
 # Run CloudWatch logs uploader
-docker run -d --name awslogs -e AWS_LOGFILES=/var/log/messages -e AWS_DURATION=10000 -v /var/log:/mnt/var/log hbkengineering/awslogs
+docker run -d --name awslogs -e AWS_LOGFILES=/var/log/access.log: -e AWS_DURATION=10000 -v /var/log:/mnt/var/log hbkengineering/docker-awslogs
 
 # Run CloudWatch logs uploader with multiple logs
-docker run -d --name awslogs -e AWS_LOGFILES=access.log: -e AWS_DURATION=10000 -v /var/log:/mnt/var/log hbkengineering/awslogs
+docker run -d --name awslogs -e AWS_GROUPNAME=/rancher-os/development -e AWS_LOGFILES=/var/log/docker.log:/var/log/system-docker.log:/var/log/messages:/var/log/secure:/var/log/syslog -e AWS_REGION=us-east-2 -e AWS_DURATION=10000 -v /var/log:/mnt/var/log hbkengineering/docker-awslogs
 
 ```
 
