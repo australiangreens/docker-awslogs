@@ -17,7 +17,7 @@ log_group_name = logs
 
 ### Environment variables
 
-* `AWS_REGION` default is "/var/log/messages" - specify multiple log files using colon prefixes, ie "/var/log/messages:/var/log/syslog"
+* `AWS_REGION` default is "us-east-1" - specify cloudwatch region
 * `AWS_LOGFILES` default is "/var/log/messages" - specify multiple log files using colon prefixes, ie "/var/log/messages:/var/log/syslog"
 * `AWS_LOGFORMAT` default is "%d/%b/%Y:%H:%M:%S %z"
 * `AWS_DURATION` default is "5000"
