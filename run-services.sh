@@ -9,7 +9,6 @@ shutdown_awslogs()
 
 trap shutdown_awslogs INT TERM HUP
 
-
 # [/var/log/logfile]
 # datetime_format = %d/%b/%Y:%H:%M:%S %z
 # file = /mnt/logs/access.log
@@ -22,8 +21,16 @@ LOGFILES=${AWS_LOGFILES:-"/mnt/var/log/messages"}
 LOGFORMAT=${AWS_LOGFORMAT:-"%d/%b/%Y:%H:%M:%S %z"}
 DURATION=${AWS_DURATION:-"5000"}
 GROUPNAME=${AWS_GROUPNAME:-"logs"}
+REGION=${AWS_REGION:-"us-east-1"}
 
 cp -f /awslogs.conf.dummy /var/awslogs/etc/awslogs.conf
+
+cat > /var/awslogs/etc/aws.conf <<EOF
+[plugins]
+cwlogs = cwlogs
+[default]
+region = $REGION
+EOF
 
 (IFS=:
 for LOGFILE in $LOGFILES; do
