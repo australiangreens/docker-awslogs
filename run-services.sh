@@ -39,7 +39,7 @@ for LOGFILE in $LOGFILES; do
 datetime_format = ${LOGFORMAT}
 file = /mnt${LOGFILE}
 buffer_duration = ${DURATION}
-log_stream_name = {ip_address}${LOGFILE}
+log_stream_name = {hostname}${LOGFILE}
 initial_position = start_of_file
 log_group_name = ${GROUPNAME}
 "
