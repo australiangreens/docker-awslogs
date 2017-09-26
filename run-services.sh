@@ -34,12 +34,13 @@ EOF
 
 (IFS=:
 for LOGFILE in $LOGFILES; do
+      CLEAN_LOGFILE = "${LOGFILE//\*}"
       o="$o
-[${LOGFILE}]
+[${CLEAN_LOGFILE}]
 datetime_format = ${LOGFORMAT}
 file = /mnt${LOGFILE}
 buffer_duration = ${DURATION}
-log_stream_name = {hostname}${LOGFILE}
+log_stream_name = {hostname}${CLEAN_LOGFILE}
 initial_position = start_of_file
 log_group_name = ${GROUPNAME}
 "
