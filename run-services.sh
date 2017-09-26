@@ -34,7 +34,7 @@ EOF
 
 (IFS=:
 for LOGFILE in $LOGFILES; do
-      CLEAN_LOGFILE = "${LOGFILE//\*}"
+      CLEAN_LOGFILE="${LOGFILE//\*}"
       o="$o
 [${CLEAN_LOGFILE}]
 datetime_format = ${LOGFORMAT}
