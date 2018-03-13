@@ -125,4 +125,3 @@ state_file = /var/awslogs/state/agent-state
 # log_stream_name = {instance_id}
 # initial_position = start_of_file
 # log_group_name = nginx-server
-

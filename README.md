@@ -3,15 +3,9 @@
 Forked from [HBKEngineering/docker-awslogs](https://github.com/HBKEngineering/docker-awslogs)
 and heavily customised to suit Australian Greens needs.
 
-
-
 ### Usage
 
 This container is intended to upload logfiles to Amazon CloudWatch Logs service.
-
-### Environment variables
-
-* `AWS_REGION` default is "us-east-1" - specify cloudwatch region
 
 ### Defining log groups, streams, files
 
