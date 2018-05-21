@@ -1,0 +1,3 @@
+GREENKITE_BUILD=docker
+DEPLOY_PIPELINE_FILE=custom-deploy.yml
+
