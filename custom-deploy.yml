@@ -1,5 +1,5 @@
 steps:
-  - command: "--context dev.greens.systems set image deployment/log-cloudwatchlogger cloudwatchlogger=docker.io/australiangreens/docker-awslog:dev.${BUILDKITE_BUILD_NUMBER}"
+  - command: "--context dev.greens.systems set image deployment/log-cloudwatchlogger cloudwatchlogger=docker.io/australiangreens/docker-awslogs:dev.${BUILDKITE_BUILD_NUMBER}"
     label: ":kubernetes: Deploy new image for the general cloudwatch logger to Dev"
     agents:
       queue: elastic
@@ -15,7 +15,7 @@ steps:
 
   - wait
 
-  - command: "--context prod.greens.systems set image deployment/greens-org-au-log-cloudwatchlogger cloudwatchlogger=docker.io/australiangreens/docker-awslog:${BUILDKITE_BUILD_NUMBER}"
+  - command: "--context prod.greens.systems set image deployment/greens-org-au-log-cloudwatchlogger cloudwatchlogger=docker.io/australiangreens/docker-awslogs:${BUILDKITE_BUILD_NUMBER}"
     label: ":kubernetes: Deploy new image for the greens.org.au cloudwatch logger to Prod"
     agents:
       queue: elastic
@@ -25,7 +25,7 @@ steps:
         config: ${HOME}/greenkite/docker-compose.yml
     branches: 'master'
 
-  - command: "--context prod.greens.systems set image deployment/log-cloudwatchlogger cloudwatchlogger=docker.io/australiangreens/docker-awslog:${BUILDKITE_BUILD_NUMBER}"
+  - command: "--context prod.greens.systems set image deployment/log-cloudwatchlogger cloudwatchlogger=docker.io/australiangreens/docker-awslogs:${BUILDKITE_BUILD_NUMBER}"
     label: ":kubernetes: Deploy new image for the general cloudwatch logger to Prod"
     agents:
       queue: elastic
