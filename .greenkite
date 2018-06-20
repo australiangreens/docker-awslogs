@@ -1,3 +1,5 @@
 GREENKITE_BUILD=docker
-DEPLOY_PIPELINE_FILE=custom-deploy.yml
 
+GREENKITE_DEPLOY=kubectl
+KUBERNETES_RESOURCE=deployment/log-cloudwatchlogger
+KUBERNETES_CONTAINER=cloudwatchlogger
