@@ -1,5 +1,5 @@
 GREENKITE_BUILD=docker
 
-GREENKITE_DEPLOY=kubectl
-KUBERNETES_RESOURCE=deployment/log-cloudwatchlogger
-KUBERNETES_CONTAINER=cloudwatchlogger
+GREENKITE_DEPLOY=helm
+HELM_RELEASE=log
+HELM_CHART=cloudwatchLogger
